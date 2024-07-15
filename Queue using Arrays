@@ -35,7 +35,7 @@ void enqueue(struct queue *q, int val){
 }
 
 int dequeue(struct queue *q){
-    int a = -1;
+    int a = 100;
     if(isEmpty(q)){
         printf("This Queue is empty\n");
     }
@@ -51,23 +51,20 @@ int main() {
    q.f= q.r = 0;
    q.arr = (int*) malloc(q.size*sizeof(int));
    
-   enqueue(&q, 12);
-   enqueue(&q, 15);
+   enqueue(&q, 6);
+   enqueue(&q, 7);
    enqueue(&q, 1);
+   enqueue(&q, 1); 
+   printf("Dequeuing element %d\n", dequeue(&q));
    printf("Dequeuing element %d\n", dequeue(&q));
    printf("Dequeuing element %d\n", dequeue(&q));
    printf("Dequeuing element %d\n", dequeue(&q));
    enqueue(&q,45);
    enqueue(&q,45);
    enqueue(&q,45);
-   
-   if(isEmpty(&q)){
-       printf("Queue is empty\n");
-   }
-   if(isFull(&q)){
-       printf("Queue is full\n");
+  
        
-   }
+   
    
     return 0;
 }
