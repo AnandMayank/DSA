@@ -16,7 +16,15 @@ void linkedListTraversal(struct Node *ptr)
 }
 
 //Case 1
-struct Node * insertAtFirst(struct Node *head, int data, int index){
+struct Node * insertAtFirst(struct Node *head , int data){
+    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    ptr->data=data;
+    
+    ptr->next=head;
+    return ptr;
+}
+//Case 2
+struct Node * insertAtIndex(struct Node *head, int data, int index){
     struct Node * ptr = (struct Node *) malloc(sizeof(struct Node));
     struct Node * p = head;
     int i = 0;
