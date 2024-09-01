@@ -1,0 +1,36 @@
+#include <iostream>
+#include <numeric>
+using namespace std;
+ 
+// User defined function
+int myfun(int x, int y)
+{
+    // for this example we have taken product
+    // of adjacent numbers
+    return x * y;
+}
+ 
+int main()
+{
+    // Initialize sum = 1
+    int sum = 1;
+    int a[] = { 5, 10, 15 };
+ 
+    // Simple default accumulate function( Irt sums up all the values of the arrays like int his case here it gives 31)
+    cout << "\nResult using accumulate: ";
+    cout << accumulate(a, a + 3, sum);
+ 
+    // Using accumulate function with
+    // defined function ( In this case it gives the product of all the values in the arrays i.e 750 )
+    cout << "\nResult using accumulate with"
+            "user-defined function: ";
+    cout << accumulate(a, a + 3, sum, myfun);
+ 
+    // Using accumulate function with
+    // pre-defined function ( It gives the value - 29)
+    cout << "\nResult using accumulate with "
+            "pre-defined function: ";
+    cout << accumulate(a, a + 3, sum, std::minus<int>());
+ 
+    return 0;
+}
