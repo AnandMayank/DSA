@@ -1,0 +1,50 @@
+// CPP program to illustrate
+// Application of at() function
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+	vector<int> myvector;
+	myvector.push_back(1);
+	myvector.push_back(2);
+	myvector.push_back(3);
+	myvector.push_back(4);
+	myvector.push_back(5);
+	myvector.push_back(6);
+	myvector.push_back(7);
+	myvector.push_back(8);
+	myvector.push_back(9);
+	// vector becomes 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+	for (int i = 0; i < myvector.size(); i += 2) {
+
+		cout << myvector.at(i);
+		cout << " ";
+	}
+// This prints the number after swapping the elements
+    // vector container declaration
+    vector<int> myvector1{ 1, 2, 3, 4 };
+    vector<int> myvector2{ 3, 5, 7, 9 };
+ 
+    // using swap() function to swap
+    // elements of vector
+    myvector1.swap(myvector2);
+ 
+    // printing the first vector
+    cout << "myvector1 = ";
+    for (auto it = myvector1.begin();
+         it < myvector1.end(); ++it)
+        cout << *it << " ";
+ 
+    // printing the second vector
+    cout << endl
+         << "myvector2 = ";
+    for (auto it = myvector2.begin();
+         it < myvector2.end(); ++it)
+        cout << *it << " ";
+    return 0;
+
+	return 0;
+}
