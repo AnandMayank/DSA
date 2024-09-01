@@ -33,7 +33,43 @@ int main()
 	cout << "Vector after inserting 500 at position 1 :\n"; 
 	for (auto x : vector_name) 
 		cout << x << " "; 
-	return 0; 
+	
+
+// inserting the same thing multiple number of times at a given index
+ // Initialising the vector 
+    vector<int> vector_name{ 1, 2, 3, 4, 5 }; 
+  
+    // Printing out the original vector 
+    cout << "Original vector :\n"; 
+    for (auto x : vector_name) 
+        cout << x << " "; 
+    cout << endl; 
+  
+    // Inserting the value 100, 4 times starting at position 
+    // 3 
+    vector_name.insert(vector_name.begin() + 3, 4, 100); 
+  
+    // Printing the modified vector 
+    cout << "Vector after inserting 100, 4 times, starting "
+            "at position 3 :\n"; 
+    for (auto x : vector_name) 
+        cout << x << " "; 
+
+//inserting the range of elements at a given index 
+
+vector < int > original { 1, 2, 3, 4 , 5};
+vector < int> temp { 2 , 4 , 0 , 9, 5 , 7 , 10};
+
+for ( auto i : original )
+cout << " THis is the original array " << a[i]<< endl;
+
+original.insert( original.begin() + 2, temp.begin() + 3 , temp.begin () + 6)
+
+for ( auto i : original }
+cout << " This is the original array after inserting arrays from temp "<< a[i];
+cout << endl ;
+
+
 } 
 
 
