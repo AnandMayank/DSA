@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// Function to check if two strings are anagrams
+bool areAnagrams(string s1, string s2)
+{
+
+    // If lengths are different, they cannot be anagrams
+    if (s1.length() != s2.length()) {
+        return false;
+    }
+
+    // Create a hashmap to store character frequencies
+    unordered_map<char, int> charCount;
+
+    // Count frequency of each character in the first string
+    for (char c : s1) {
+        charCount[c]++;
+    }
+
+    // Decrement frequency of each character in the second
+    // string
+    for (char c : s2) {
+        // If character not found in hashmap, return false
+        if (charCount.find(c) == charCount.end()
+            || charCount[c] == 0) {
+            return false;
+        }
+        charCount[c]--;
+    }
+
+    // Check if all frequencies are zero
+    for (auto& pair : charCount) {
+        if (pair.second != 0) {
+            return false;
+        }
+    }
+
+    // If all conditions satisfied, they are anagrams
+    return true;
+}
+
+int main()
+{
+    string str1 = "listen";
+    string str2 = "silent";
+
+    if (areAnagrams(str1, str2)) {
+        cout << "True" << endl;
+    }
+    else {
+        cout << "False" << endl;
+    }
+
+    str1 = "gram";
+    str2 = "arm";
+
+    if (areAnagrams(str1, str2)) {
+        cout << "True" << endl;
+    }
+    else {
+        cout << "False" << endl;
+    }
+
+    return 0;
+}
