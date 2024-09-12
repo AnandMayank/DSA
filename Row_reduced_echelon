@@ -1,0 +1,83 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void printMatrix(const vector<vector<int>>& matrix) {
+    int p = matrix.size();
+    int q = matrix[0].size();
+    for (int i = 0; i < p; ++i) {
+        for (int j = 0; j < q; ++j) {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+
+void rowReform(vector<vector<int>>& matrix) {
+    int p = matrix.size();
+    int q = matrix[0].size();
+    
+    int lead = 0;  
+
+    for (int i = 0; i < p; ++i) {
+        if (lead >= q) return;
+
+        int row = i;
+        while (matrix[row][lead] == 0) {
+            row++;
+            if (row == p) {
+                row = i;
+                lead++;
+                if (lead >= q) return;
+            }
+        }
+
+    
+        if (row != i) {
+            swap(matrix[row], matrix[i]);
+        }
+
+    
+        int leadElement = matrix[i][lead];
+        for (int j = 0; j < q; ++j) {
+            matrix[i][j] /= leadElement;
+        }
+        for (int k = 0; k < p; ++k) {
+            if (k != i) {
+                int factor = matrix[k][lead];
+                for (int j = 0; j < q; ++j) {
+                    matrix[k][j] -= factor * matrix[i][j];
+                }
+            }
+        }
+
+        lead++;
+    }
+}
+
+int main() {
+    int p, q;
+    cout << "Enter number of rows and columns: ";
+    cin >> p >> q;
+
+    vector<vector<int>> matrix(p, vector<int>(q));
+
+    cout << "Enter matrix elements:" << endl;
+    for (int i = 0; i < p; ++i) {
+        for (int j = 0; j < q; ++j) {
+            cin >> matrix[i][j];
+        }
+    }
+
+    cout << "Original Matrix:" << endl;
+    printMatrix(matrix);
+
+    rowReform(matrix);
+
+    cout << "Matrix after row reduction:" << endl;
+    printMatrix(matrix);
+
+    return 0;
+}
