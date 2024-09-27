@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	// your code goes here
+
+    int t;
+    cin >> t; 
+
+    while (t--) {
+        long long n;
+        cin >> n; 
+        long long arr[n]; 
+
+       
+        for (int i = 0; i < n; i++) {
+            cin >> arr[i]; 
+        }
+
+        long long h = arr[0]; 
+        for (int i = 1; i < n; i++) {
+            h = max(h, arr[i]); 
+        }
+
+        long long ans = 0;
+        int b = 0; 
+        int i = -1; 
+
+       
+        for (int j = 0; j < n; j++) {
+            if (arr[j] == h) {
+                i = j; 
+                b = (n+1) / 2; 
+                break; 
+            }
+        }
+
+        
+        if (n <= 3) {
+            
+            if (i % 2 == 0) {
+                ans = h + 2; 
+            } else {
+                ans = h + 1; 
+            }
+        } else {
+            ans = h + b; 
+        }
+
+        cout << ans << endl; 
+    }
+
+    return 0;
+}
